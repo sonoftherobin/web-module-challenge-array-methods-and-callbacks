@@ -6,17 +6,20 @@ const { fifaData } = require('./fifa.js')
 Practice accessing data by console.log-ing the following pieces of data note. 
 
 💡 HINT: You may want to filter the data first 😉*/
-
+const hT= fifaData.filter(function(item){
+    return item.Year === 2014 && item.Stage === "Final"
+});
+console.log (hT);
 //(a) Home Team name for 2014 world cup final
-
+console.log(hT[0]['Home Team Name']);
 //(b) Away Team name for 2014 world cup final
-
+console.log(hT[0]['Away Team Name']);
 //(c) Home Team goals for 2014 world cup final
-
+console.log(hT[0]['Home Team Goals']);
 //(d) Away Team goals for 2014 world cup final
-
+console.log(hT[0]['Away Team Goals']);
 //(e) Winner of 2014 world cup final */
-
+console.log(hT[0]['Win conditions']);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use getFinals to do the following:
@@ -24,12 +27,18 @@ Use getFinals to do the following:
 2. Return an array of objects with the data of the teams that made it to the final stage
 
 💡 HINT - you should be looking at the stage key inside of the objects
-*/
+// *///const finalTeams= fifaData.filter(function(item){
+//     return item.Stage === "Final"});
+//     console.log(finalTeams);
 
-function getFinals(/* code here */) {
-    /* code here */
- }
+function getFinals(array){
+    const finalTeams= array.filter(item => item.Stage === "Final")
+    return finalTeams;
+   }
+   
 
+
+ 
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -38,9 +47,11 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function as the second parameter that will take getFinals from task 2 as an argument
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(/* code here */) {
-    /* code here */
-}
+function getYears(array,callBack) {
+    //const years=array.filter(function(callback)){
+        return callBack(array).map(item=> item.Year);
+    }
+
 
 
 
@@ -52,7 +63,7 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
+function getWinners(array,callBack) {
     /* code here */
 }
 
